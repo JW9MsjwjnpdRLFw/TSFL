@@ -3,11 +3,16 @@
 ## Requirements
 
 - Python 3.6
-- tensorflow 1.12.0
-- Keras 2.2.4
+- pytorch 1.9.0
+- torchvision 0.9.0
+- tensorflow 1.15.0
+- Keras 2.3.1
 - numpy 1.15.4
 - scipy 1.1.0
 - scikit-learn 0.19.1
+- sklearn 0.19.1
+- annoy 1.17.0
+- h5py 2.10.0
 
 ## How to run
 
