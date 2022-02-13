@@ -18,7 +18,7 @@
 
 - **1. Get Dataset:**
   
-  You can download ISRUC-Sleep-S3 dataset by the following command, which will automatically download the raw data and extracted data to `./featureNet/data/ISRUC_S3/`:
+  You can download ISRUC-Sleep-S3 dataset by the following command, which will automatically download the raw data and extracted data to `./data/ISRUC_S3/`:
 
   ```shell
   cd ./featureNet
@@ -34,13 +34,13 @@
   python preprocess.py
   ```
   
-  In addition, distance based adjacency matrix is provided at `./featureNet/data/ISRUC_S3/DistanceMatrix.npy`.
+  In addition, distance based adjacency matrix is provided at `./data/ISRUC_S3/DistanceMatrix.npy`.
   
 - **3. Configurations of feature extraction module:**
 
   Write the config file in the format of the example.
 
-  We provide a config file at `./featureNet/config/ISRUC.config`
+  We provide a config file at `./config/ISRUC.config`
 
 - **4. Prepare feature extraction module:**
 
@@ -50,7 +50,6 @@
   + -g: The number of the GPU to use. E.g.,`0`,`1,3`. Set this to`-1` if only CPU is used.
 
   ```shell
-  cd ./featureNet
   python train_FeatureNet.py -c ./config/ISRUC.config -g 0
   ```
 
@@ -64,14 +63,12 @@
   + --data_dir: which dir to save experiment logs, model and temporary files. 
 
   ```shell
-  cd ../
   python fed_experiment.py --model gat --case_name knn --data_dir ./result/ISRUC_S3_knn
   ```
 
 > **Summary of commands to run:**
 >
 > ```shell
-> cd ./featureNet
 > ./get_ISRUC_S3.sh
 > python preprocess.py
 > python train_FeatureNet.py -c ./config/ISRUC.config -g 0
