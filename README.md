@@ -16,12 +16,11 @@
 
 ## How to run
 
-# gnn4spatial_temporarl
 
 ## environment
  ```shell
 conda create -n gnn python=3.6
-bash install_package.sh
+bash install_env.sh
   ```
 
 
@@ -31,9 +30,11 @@ bash install_package.sh
   
   You can download ISRUC-Sleep-S3 dataset by the following url
   http://dataset.isr.uc.pt/ISRUC_Sleep/subgroupIII
+  put all data in "./data/ISRUC_S3/RawData"
   
   http://dataset.isr.uc.pt/ISRUC_Sleep/ExtractedChannels/subgroupIII-Extractedchannels
-
+  put all data in "./data/ISRUC_S3/ExtractedChannels"
+  
 
 - **2. Data preparation:**
 
