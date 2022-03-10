@@ -16,21 +16,30 @@
 
 ## How to run
 
+# gnn4spatial_temporarl
+
+## environment
+ ```shell
+conda create -n gnn python=3.6
+bash install_package.sh
+  ```
+
+
+## How to run
+
 - **1. Get Dataset:**
   
-  You can download ISRUC-Sleep-S3 dataset by the following command, which will automatically download the raw data and extracted data to `./data/ISRUC_S3/`:
+  You can download ISRUC-Sleep-S3 dataset by the following url
+  http://dataset.isr.uc.pt/ISRUC_Sleep/subgroupIII
+  
+  http://dataset.isr.uc.pt/ISRUC_Sleep/ExtractedChannels/subgroupIII-Extractedchannels
 
-  ```shell
-  cd ./featureNet
-  ./get_ISRUC_S3.sh
-  ```
 
 - **2. Data preparation:**
 
   To facilitate reading, we preprocess the dataset into a single .npz file:
 
   ```shell
-  cd ./featureNet
   python preprocess.py
   ```
   
@@ -54,17 +63,32 @@
   ```
 
 
-- **5. TSFL Experiment:**
+- **5. Experiment:**
 
-  Get back to thr Root folder. Run `python fed_experiment.py`.   
+  Get back to thr Root folder. Run `python gnn_experiment.py`.   
   In this command, 3 arguments can be changed.  
-  + --model: which GNN model you use in TSFL. Currently supports sage, gat and gcn.
-  + --case_name: which connective function you use in TSFL. Currently supports distance, knn, pcc and plv.
+  + --model: which GNN model you use. Currently supports sage, gat and gcn.
+  + --case_name: which connective function you use. Currently supports distance, knn, pcc and plv.
   + --data_dir: which dir to save experiment logs, model and temporary files. 
 
+    single machine experiment:
+
   ```shell
-  python fed_experiment.py --model gat --case_name knn --data_dir ./result/ISRUC_S3_knn
+  python gnn_experiment.py --model gat --case_name knn --data_dir ./result/ISRUC_S3_knn/
+  python gnn_experiment.py --model gat --case_name plv --data_dir ./result/ISRUC_S3_plv/
+  python gnn_experiment.py --model gat --case_name distance --data_dir ./result/ISRUC_S3_distance/
+  python gnn_experiment.py --model gat --case_name pcc --data_dir ./result/ISRUC_S3_distance/
   ```
+    multiple machines experiment:
+    
+  ```shell
+  python fed_experiment.py --model gat --case_name knn --data_dir ./result/ISRUC_S3_knn  
+  python fed_experiment.py --model gat --case_name plv --data_dir ./result/ISRUC_S3_plv  
+  python fed_experiment.py --model gat --case_name distance --data_dir ./result/ISRUC_S3_distance  
+  python fed_experiment.py --model gat --case_name pcc --data_dir ./result/ISRUC_S3_pcc  
+
+  ```
+
 
 > **Summary of commands to run:**
 >
@@ -72,7 +96,6 @@
 > ./get_ISRUC_S3.sh
 > python preprocess.py
 > python train_FeatureNet.py -c ./config/ISRUC.config -g 0
-> cd ../
 > python fed_experiment.py --model gat --case_name knn --data_dir ./result/ISRUC_S3_knn
 > ```
 >
